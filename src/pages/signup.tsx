@@ -1,7 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { TextInput, Button } from '@mantine/core';
 
 export default function SignUpForm() {
   const initialValues = {
@@ -40,20 +39,20 @@ export default function SignUpForm() {
             type='text'
             name='firstName'
             placeholder='First Name'
-            as={TextField}
+            as={TextInput}
           />
           <Field
             type='text'
             name='lastName'
             placeholder='Last Name'
-            as={TextField}
+            as={TextInput}
           />
-          <Field type='email' name='email' placeholder='Email' as={TextField} />
+          <Field type='email' name='email' placeholder='Email' as={TextInput} />
           <Field
             type='password'
             name='password'
             placeholder='Password'
-            as={TextField}
+            as={TextInput}
           />
           <Button type='submit' variant='contained'>
             Sign Up
