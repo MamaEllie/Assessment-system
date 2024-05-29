@@ -105,7 +105,7 @@ export default function SignUpForm() {
         </Formik>
         <div className='flex flex-row items-center gap-x-1 justify-center'>
           <p className=' text-gray-600'>Already have an account?</p>
-          <Link href='/login' legacyBehavior passHref>
+          <Link href='/signin' legacyBehavior passHref>
             <a className=' text-black font-medium hover:underline cursor-pointer'>
               Sign in
             </a>

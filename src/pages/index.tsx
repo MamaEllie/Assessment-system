@@ -1,42 +1,107 @@
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
-import { Select } from '@mantine/core';
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
-  const universities = [
-    'University of Dar es Salaam (UDSM)',
-    'Sokoine University of Agriculture (SUA)',
-    'Ardhi University (ARU)',
-    'University of Dodoma (UDOM)',
-    'Tumaini University Makumira',
-    'Mzumbe University',
-    'Nelson Mandela African Institute of Science and Technology (NM-AIST)',
-    'Muhimbili University of Health and Allied Sciences (MUHAS)',
-    'Ruaha Catholic University (RUCU)',
-    'St. Augustine University of Tanzania (SAUT)',
-    'Zanzibar University (ZU)',
-    'University of Iringa',
-    'Teofilo Kisanji University (TEKU)',
-    'Tengeru Institute of Community Development (TICD)',
-    'Hubert Kairuki Memorial University (HKMU)',
-    'Jordan University College',
-    'College of Business Education (CBE)',
-    'Kampala International University in Tanzania (KIUT)',
-    'Mwalimu Nyerere Memorial Academy (MNMA)',
-    'Moshi Co-operative University (MoCU)',
+  const [page, setPage] = useState('home');
+  const reasons = [
+    'Comprehensive Assessments: Evaluate key aspects of campus infrastructure, technology, and sustainability.',
+    'Actionable Recommendations: Receive tailored recommendations to enhance campus smartness.',
+    'Historical Data: Track progress over time with access to previous assessments.',
+    'User-Friendly Interface: Enjoy a seamless and intuitive user experience.',
   ];
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 bg-defaultBg ${inter.className}`}
-    >
-      <Select
-        label='Select a University'
-        placeholder='Pick one'
-        data={universities}
-        searchable
-        nothingFoundMessage='No options'
-      />
+    <main className=' h-screen bg-graybg w-full'>
+      <nav className='flex flex-row items-center justify-between px-32 py-10'>
+        <h1 className=' text-4xl font-bold'>SCAS</h1>
+        <div className='flex flex-row items-center gap-x-8 text-lg'>
+          <h3
+            className=' underline cursor-pointer'
+            onClick={() => setPage('home')}
+          >
+            Home
+          </h3>
+          <h3
+            className=' underline cursor-pointer'
+            onClick={() => setPage('aboutUs')}
+          >
+            About us
+          </h3>
+          <Link href='/signin' legacyBehavior passHref>
+            <a className=' text-black underline cursor-pointer'>Sign in</a>
+          </Link>
+        </div>
+      </nav>
+      <div className='flex flex-col justify-between items-center w-full mt-32'>
+        {page === 'home' && (
+          <div className=' w-1/2 text-center'>
+            <h1 className=' text-3xl font-semibold text-black'>
+              Welcome to the Smart Campus Assessment System
+            </h1>
+            <h3 className=' text-xl text-black mt-10 font-semibold'>
+              Empowering Educational Institutions for a Smarter Future
+            </h3>
+            <p className=' text-base text-gray-700 mt-4'>
+              Our innovative platform helps universities and colleges assess,
+              enhance, and manage their campus infrastructure using advanced
+              technology and data-driven insights.
+            </p>
+            <p className=' text-base text-gray-700 mt-2'>Get Started Today</p>
+            <p className=' text-base text-gray-700 mt-2'>
+              <Link href='/signin' legacyBehavior passHref>
+                <a className=' text-black font-bold hover:underline cursor-pointer'>
+                  Sign in
+                </a>
+              </Link>{' '}
+              or{' '}
+              <Link href='/signup' legacyBehavior passHref>
+                <a className=' text-black font-bold hover:underline cursor-pointer'>
+                  Sign up
+                </a>
+              </Link>{' '}
+              now to begin your smart campus assessment and discover how you can
+              pave the way to university smartness.
+            </p>
+          </div>
+        )}
+        {page === 'aboutUs' && (
+          <div className=' w-1/2'>
+            <h1 className='text-2xl font-semibold text-black text-center'>
+              About us
+            </h1>
+            <div className='flex flex-col gap-y-1 mt-8'>
+              <h1 className='text-xl text-black font-semibold'>
+                Welcome to the Smart Campus Assessment System
+              </h1>
+              <p className='text-gray-800'>
+                Our mission is to empower educational institutions to evaluate
+                and enhance their smart campus infrastructure, ensuring a
+                seamless and technology-driven learning environment for all.
+              </p>
+            </div>
+            <div className='flex flex-col gap-y-1 mt-8'>
+              <h1 className='text-xl text-black font-semibold'>Our Story</h1>
+              <p className='text-gray-800'>
+                The Smart Campus Assessment System was developed in response to
+                the growing need for educational institutions to leverage
+                technology for improved operational efficiency and enhanced
+                learning experiences. Inspired by the advancements in smart
+                technologies, our team set out to create a comprehensive tool
+                for assessing and improving campus smartness.
+              </p>
+            </div>
+            <div className='flex flex-col gap-y-1 mt-8'>
+              <h1 className='text-xl text-black font-semibold'>
+                Why Smart Campus Assessment System?
+              </h1>
+              <ul className='list-disc pl-5 text-gray-800'>
+                {reasons.map((reason) => (
+                  <li key={reason}>{reason}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
     </main>
   );
 }

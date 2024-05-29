@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -16,6 +16,9 @@ const config: Config = {
       colors: {
         graybg: '#F7F7F8',
         graytext: '#A1A1AD',
+      },
+      fontFamily: {
+        inter: "'Inter', sans-serif",
       },
     },
   },
