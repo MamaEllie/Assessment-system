@@ -56,7 +56,7 @@ export default function SignUpForm() {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ setFieldValue, values }) => (
+          {({ setFieldValue, errors }) => (
             <Form className=' w-full'>
               <h1 className='text-xl text-center text-black font-semibold'>
                 Create your account
@@ -71,6 +71,7 @@ export default function SignUpForm() {
                   onChange={(event) =>
                     setFieldValue('firstName', event.currentTarget.value)
                   }
+                  error={errors.firstName}
                 />
                 <TextInput
                   label='Last Name'
@@ -78,6 +79,7 @@ export default function SignUpForm() {
                   onChange={(event) =>
                     setFieldValue('lastName', event.currentTarget.value)
                   }
+                  error={errors.lastName}
                 />
                 <TextInput
                   label='Email'
@@ -85,6 +87,7 @@ export default function SignUpForm() {
                   onChange={(event) =>
                     setFieldValue('email', event.currentTarget.value)
                   }
+                  error={errors.email}
                 />
                 <TextInput
                   label='Password'
@@ -93,6 +96,7 @@ export default function SignUpForm() {
                     setFieldValue('password', event.currentTarget.value)
                   }
                   rightSection={icon()}
+                  error={errors.password}
                 />
                 <div className='flex flex-row justify-center py-4'>
                   <button

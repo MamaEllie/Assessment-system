@@ -196,20 +196,20 @@ export default function Dashboard() {
             <div className='flex-1'>
               <h1 className='font-semibold text-lg'>Dashboard</h1>
             </div>
-            <div className='flex flex-1 items-center gap-4 md:ml-auto md:gap-2 lg:gap-4'>
-              <form className='ml-auto flex-1 sm:flex-initial'></form>
-            </div>
           </header>
+          <div className=' py-10 px-20'>
+            <div className=' lg:w-[70%] 2xl:w-[50%]'>
+              <Select
+                label='Select a University'
+                placeholder='Pick one'
+                data={universities}
+                searchable
+                nothingFoundMessage='No options'
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      <Select
-        label='Select a University'
-        placeholder='Pick one'
-        data={universities}
-        searchable
-        nothingFoundMessage='No options'
-      />
     </div>
   );
 }

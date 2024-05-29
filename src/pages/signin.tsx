@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 export default function LoginForm() {
   const [passwordType, setPasswordType] = useState('password');
-  const router = useRouter()
+  const router = useRouter();
   const initialValues = {
     email: '',
     password: '',
@@ -25,7 +25,7 @@ export default function LoginForm() {
 
   const handleSubmit = (values: Record<string, string>) => {
     console.log(values);
-    router.push('/dashboard')
+    router.push('/dashboard');
   };
 
   const icon = () => (
@@ -52,7 +52,7 @@ export default function LoginForm() {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ setFieldValue, values }) => (
+          {({ setFieldValue, errors }) => (
             <Form className=' w-full'>
               <h1 className='text-xl text-center text-black font-semibold'>
                 Sign in
@@ -67,6 +67,7 @@ export default function LoginForm() {
                   onChange={(event) =>
                     setFieldValue('email', event.currentTarget.value)
                   }
+                  error={errors.email}
                 />
                 <TextInput
                   label='Password'
@@ -75,6 +76,7 @@ export default function LoginForm() {
                     setFieldValue('password', event.currentTarget.value)
                   }
                   rightSection={icon()}
+                  error={errors.password}
                 />
                 <div className='flex flex-row justify-center py-4'>
                   <button
