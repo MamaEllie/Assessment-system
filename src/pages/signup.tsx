@@ -4,9 +4,11 @@ import { TextInput, rem } from '@mantine/core';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function SignUpForm() {
   const [passwordType, setPasswordType] = useState('password');
+  const router = useRouter()
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -27,6 +29,7 @@ export default function SignUpForm() {
 
   const handleSubmit = (values: Record<string, string>) => {
     console.log(values);
+    router.push('/dashboard')
   };
 
   const icon = () => (

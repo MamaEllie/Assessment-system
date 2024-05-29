@@ -4,9 +4,11 @@ import { TextInput, rem } from '@mantine/core';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function LoginForm() {
   const [passwordType, setPasswordType] = useState('password');
+  const router = useRouter()
   const initialValues = {
     email: '',
     password: '',
@@ -23,6 +25,7 @@ export default function LoginForm() {
 
   const handleSubmit = (values: Record<string, string>) => {
     console.log(values);
+    router.push('/dashboard')
   };
 
   const icon = () => (
