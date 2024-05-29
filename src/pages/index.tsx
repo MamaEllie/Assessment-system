@@ -10,10 +10,10 @@ export default function Home() {
     'User-Friendly Interface: Enjoy a seamless and intuitive user experience.',
   ];
   return (
-    <main className=' h-screen bg-graybg w-full'>
-      <nav className='flex flex-row items-center justify-between px-32 py-10'>
+    <main className=' min-h-screen md:h-screen bg-graybg w-full px-8 md:px-0 pb-20'>
+      <nav className='flex flex-col md:flex-row items-center md:justify-between gap-y-6 md:gap-y-0 px-10 md:px-32 py-10'>
         <h1 className=' text-4xl font-bold'>SCAS</h1>
-        <div className='flex flex-row items-center gap-x-8 text-lg'>
+        <div className='flex flex-row items-center  gap-x-4 md:gap-x-8 text-lg'>
           <h3
             className=' underline cursor-pointer'
             onClick={() => setPage('home')}
@@ -31,10 +31,10 @@ export default function Home() {
           </Link>
         </div>
       </nav>
-      <div className='flex flex-col justify-between items-center w-full mt-32'>
+      <div className='flex flex-col justify-between items-center w-full md:mt-20'>
         {page === 'home' && (
-          <div className=' w-1/2 text-center'>
-            <h1 className=' text-3xl font-semibold text-black'>
+          <div className=' w-full md:w-2/3 text-center'>
+            <h1 className=' text-2xl md:text-3xl font-semibold text-black'>
               Welcome to the Smart Campus Assessment System
             </h1>
             <h3 className=' text-xl text-black mt-10 font-semibold'>
@@ -45,7 +45,7 @@ export default function Home() {
               enhance, and manage their campus infrastructure using advanced
               technology and data-driven insights.
             </p>
-            <p className=' text-base text-gray-700 mt-2'>Get Started Today</p>
+            <p className=' text-base text-gray-700 mt-2 font-semibold'>Get Started Today</p>
             <p className=' text-base text-gray-700 mt-2'>
               <Link href='/signin' legacyBehavior passHref>
                 <a className=' text-black font-bold hover:underline cursor-pointer'>
@@ -64,7 +64,7 @@ export default function Home() {
           </div>
         )}
         {page === 'aboutUs' && (
-          <div className=' w-1/2'>
+          <div className=' w-full  md:w-2/3'>
             <h1 className='text-2xl font-semibold text-black text-center'>
               About us
             </h1>
