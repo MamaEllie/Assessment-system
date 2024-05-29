@@ -42,8 +42,8 @@ export default function LoginForm() {
     </>
   );
   return (
-    <div className=' h-screen flex flex-row justify-center items-center bg-graybg'>
-      <div className='flex flex-col px-10 py-8 bg-white w-[500px] mx-4'>
+    <div className=' h-screen w-full md:flex pt-24 md:pt-0 flex-row justify-center items-center bg-graybg'>
+      <div className='flex flex-col px-10 py-8 bg-white md:w-[500px] mx-4'>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
