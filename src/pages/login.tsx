@@ -5,18 +5,14 @@ import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function SignUpForm() {
+export default function LoginForm() {
   const [passwordType, setPasswordType] = useState('password');
   const initialValues = {
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required('First name is required'),
-    lastName: Yup.string().required('Last name is required'),
     email: Yup.string()
       .email('Invalid email address')
       .required('Email is required'),
@@ -56,26 +52,12 @@ export default function SignUpForm() {
           {({ setFieldValue, values }) => (
             <Form className=' w-full'>
               <h1 className='text-xl text-center text-black font-semibold'>
-                Create your account
+                Sign in
               </h1>
               <p className=' text-gray-600 text-center'>
-                Welcome! Please fill in the details to get started
+                Welcome back! Please sign in to continue
               </p>
               <div className='flex flex-col gap-y-4 mt-8 text-gray-600'>
-                <TextInput
-                  label='First Name'
-                  type='text'
-                  onChange={(event) =>
-                    setFieldValue('firstName', event.currentTarget.value)
-                  }
-                />
-                <TextInput
-                  label='Last Name'
-                  type='text'
-                  onChange={(event) =>
-                    setFieldValue('lastName', event.currentTarget.value)
-                  }
-                />
                 <TextInput
                   label='Email'
                   type='text'
@@ -96,7 +78,7 @@ export default function SignUpForm() {
                     type='submit'
                     className='bg-black text-white py-1.5 px-8 w-full rounded-md '
                   >
-                    Get started
+                    Sign in
                   </button>
                 </div>
               </div>
@@ -104,10 +86,10 @@ export default function SignUpForm() {
           )}
         </Formik>
         <div className='flex flex-row items-center gap-x-1 justify-center'>
-          <p className=' text-gray-600'>Already have an account?</p>
-          <Link href='/login' legacyBehavior passHref>
+          <p className=' text-gray-600'>Don&apos;t have an account?</p>
+          <Link href='/signup' legacyBehavior passHref>
             <a className=' text-black font-medium hover:underline cursor-pointer'>
-              Sign in
+              Sign up
             </a>
           </Link>
         </div>
