@@ -10,7 +10,7 @@ export default function Home() {
     'User-Friendly Interface: Enjoy a seamless and intuitive user experience.',
   ];
   return (
-    <main className=' min-h-screen md:h-screen bg-graybg w-full px-8 md:px-0 pb-20'>
+    <main className='min-h-screen bg-graybg w-full px-8 md:px-0 pb-20'>
       <nav className='flex flex-col md:flex-row items-center md:justify-between gap-y-6 md:gap-y-0 px-10 md:px-32 py-10'>
         <h1 className=' text-4xl font-bold'>SCAS</h1>
         <div className='flex flex-row items-center  gap-x-4 md:gap-x-8 text-lg'>
