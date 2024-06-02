@@ -15,11 +15,15 @@ export default async function handler(
     });
     res.status(200).json(assessments);
   } else if (req.method === 'POST') {
+
     const { name, description } = req.body;
-    const assessment = await prisma.assessment.create({
+    const assessment = await prisma.question.create({
       data: {
-        name,
-        description,
+        assessmentId: 1,
+        questionText: '',
+        questionType: '',
+        options: [''],
+        correctAnswer: '',
       },
     });
     res.status(201).json(assessment);

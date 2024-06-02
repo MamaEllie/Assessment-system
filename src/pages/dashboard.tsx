@@ -1,31 +1,10 @@
 import React, { useState } from 'react';
-import { Select } from '@mantine/core';
-import { CreateAssessment } from '@/components';
+import { Assessments, CreateAssessment } from '@/components';
+import { useRouter } from 'next/router';
 
 export default function Dashboard() {
   const [page, setPage] = useState('Dashboard');
-  const universities = [
-    'University of Dar es Salaam (UDSM)',
-    'Sokoine University of Agriculture (SUA)',
-    'Ardhi University (ARU)',
-    'University of Dodoma (UDOM)',
-    'Tumaini University Makumira',
-    'Mzumbe University',
-    'Nelson Mandela African Institute of Science and Technology (NM-AIST)',
-    'Muhimbili University of Health and Allied Sciences (MUHAS)',
-    'Ruaha Catholic University (RUCU)',
-    'St. Augustine University of Tanzania (SAUT)',
-    'Zanzibar University (ZU)',
-    'University of Iringa',
-    'Teofilo Kisanji University (TEKU)',
-    'Tengeru Institute of Community Development (TICD)',
-    'Hubert Kairuki Memorial University (HKMU)',
-    'Jordan University College',
-    'College of Business Education (CBE)',
-    'Kampala International University in Tanzania (KIUT)',
-    'Mwalimu Nyerere Memorial Academy (MNMA)',
-    'Moshi Co-operative University (MoCU)',
-  ];
+  const router = useRouter()
   const menus = [
     {
       name: 'Dashboard',
@@ -47,15 +26,23 @@ export default function Dashboard() {
       name: 'Recomendations',
       icon: <UsersIcon className='h-4 w-4' />,
     },
-    {
-      name: 'Settings',
-      icon: <SettingsIcon className='h-4 w-4' />,
-    },
+    // {
+    //   name: 'Settings',
+    //   icon: <SettingsIcon className='h-4 w-4' />,
+    // },
     {
       name: 'Logout',
       icon: <LogOutIcon className='h-4 w-4' />,
     },
   ];
+  function handleMenuOption(menu: string) {
+    if (menu === 'Logout') {
+      router.push('/')
+    } else {
+      setPage(menu);
+    }
+  }
+
   return (
     <div>
       <div className='grid min-h-screen w-full overflow-hidden lg:grid-cols-[280px_1fr]'>
@@ -73,7 +60,7 @@ export default function Dashboard() {
                   <div
                     className='flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 hover:bg-gray-200 cursor-pointer'
                     key={menu.name}
-                    onClick={() => setPage(menu.name)}
+                    onClick={() => handleMenuOption(menu.name)}
                   >
                     {menu.icon}
                     {menu.name}
@@ -91,14 +78,8 @@ export default function Dashboard() {
           </header>
           <div className=' py-10 px-20'>
             {page === 'Dashboard' && (
-              <div className=' lg:w-[70%] 2xl:w-[50%]'>
-                <Select
-                  label='Select a University'
-                  placeholder='Pick one'
-                  data={universities}
-                  searchable
-                  nothingFoundMessage='No options'
-                />
+              <div className=' w-full'>
+                <Assessments />
               </div>
             )}
             {page === 'Admin' && (

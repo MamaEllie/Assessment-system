@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
+import DBClient from '../../../config';
 
-const prisma = new PrismaClient();
+const prisma = DBClient.getInstance().prisma;
+
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,14 +11,14 @@ export default async function handler(
   const { id } = req.query;
 
   if (req.method === 'GET') {
-    const test = await prisma.assessment.findUnique({
+    const assessment = await prisma.assessment.findUnique({
       where: { id: Number(id) },
       include: {
         questions: true,
       },
     });
-    if (test) {
-      res.status(200).json(test);
+    if (assessment) {
+      res.status(200).json(assessment);
     } else {
       res.status(404).end();
     }

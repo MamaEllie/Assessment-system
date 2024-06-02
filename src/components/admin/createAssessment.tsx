@@ -4,6 +4,79 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 export function CreateAssessment() {
+  const questions = [
+    {
+      questionText: 'How would you rate the overall connectivity on campus?',
+      options: ['Poor', 'Fair', 'Good', 'Excellent'],
+      correctAnswer: 'Excellent',
+    },
+    {
+      questionText:
+        'Are you satisfied with the sustainability initiatives implemented on campus?',
+      options: ['Yes', 'No'],
+      correctAnswer: 'Yes',
+    },
+    {
+      questionText:
+        'How efficient do you find the campus facilities and services?',
+      options: ['Poor', 'Fair', 'Good', 'Excellent'],
+      correctAnswer: 'Excellent',
+    },
+    {
+      questionText:
+        'Do you feel that the campus promotes a culture of innovation and technology adoption?',
+      options: ['Yes', 'No'],
+      correctAnswer: 'Yes',
+    },
+    {
+      questionText:
+        'Have you noticed any recent improvements or upgrades in campus infrastructure or services?',
+      options: ['Yes', 'No'],
+      correctAnswer: 'Yes',
+    },
+    {
+      questionText:
+        'How would you rate the accessibility of digital resources and platforms provided by the university?',
+      options: ['Poor', 'Fair', 'Good', 'Excellent'],
+      correctAnswer: 'Excellent',
+    },
+    {
+      questionText:
+        'Do you feel that the campus effectively utilizes technology to enhance learning and collaboration?',
+      options: ['Yes', 'No'],
+      correctAnswer: 'Yes',
+    },
+    {
+      questionText:
+        'How satisfied are you with the overall campus environment in terms of cleanliness and maintenance?',
+      options: ['Poor', 'Fair', 'Good', 'Excellent'],
+      correctAnswer: 'Excellent',
+    },
+    {
+      questionText:
+        'How efficiently do the smart campus systems manage resource allocation (e.g., classrooms, labs, funding) to support academic activities?',
+      options: [
+        'Very efficiently',
+        'Efficiently',
+        'Neutral',
+        'Inefficiently',
+        'Very inefficiently',
+      ],
+      correctAnswer: 'Very inefficiently',
+    },
+    {
+      questionText:
+        'How effective are the smart campus communication systems (e.g., dashboards, alerts) in facilitating communication between the campus and external stakeholders, such as government bodies and industry partners?',
+      options: [
+        'Very efficiently',
+        'Efficiently',
+        'Neutral',
+        'Inefficiently',
+        'Very inefficiently',
+      ],
+      correctAnswer: 'Very inefficiently',
+    },
+  ];
   const initialValues = {
     name: '',
     description: '',
