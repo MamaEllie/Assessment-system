@@ -87,13 +87,12 @@ export function CreateAssessment() {
   });
   const handleSubmit = async (values: Record<string, string>) => {
     const { name, description } = values;
-
     const res = await fetch('/api/assessment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, description }),
+      body: JSON.stringify({ name, description, questions }),
     });
 
     if (res.status === 201) {

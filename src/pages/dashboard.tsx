@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Assessments, CreateAssessment } from '@/components';
 import { useRouter } from 'next/router';
+import { CurrentAssessment } from '@/components/dashboard/currentAssessment';
 
 export default function Dashboard() {
   const [page, setPage] = useState('Dashboard');
@@ -79,7 +80,7 @@ export default function Dashboard() {
         <div className='flex flex-col'>
           <header className='flex h-14 lg:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40'>
             <div className='flex flex-row items-center justify-between w-full'>
-              <h1 className='font-semibold text-lg'>Dashboard</h1>
+              <h1 className='font-semibold text-lg'>{page}</h1>
               {user && (
                 <div className='flex flex-row items-center gap-x-4'>
                   <div className='text-base font-semibold px-2 py-1.5 rounded-full bg-white border-[1px] border-gray-500'>
@@ -102,6 +103,11 @@ export default function Dashboard() {
             {page === 'Admin' && (
               <div className='w-1/2'>
                 <CreateAssessment />
+              </div>
+            )}
+            {page === 'Current assessment' && (
+              <div className='w-2/3'>
+                <CurrentAssessment />
               </div>
             )}
           </div>

@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import DBClient from '../../../config';
-
-const prisma = DBClient.getInstance().prisma;
+import { prisma } from '../../../config';
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,11 +13,14 @@ export default async function handler(
     });
     res.status(200).json(assessments);
   } else if (req.method === 'POST') {
-    const { name, description } = req.body;
+    const { name, description, questions } = req.body;
     const assessment = await prisma.assessment.create({
       data: {
         name,
         description,
+        questions: {
+          create: questions,
+        },
       },
     });
     res.status(201).json(assessment);

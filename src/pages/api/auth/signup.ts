@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import DBClient from '../../../config';
-
-const prisma = DBClient.getInstance().prisma;
+import { prisma } from '../../../config';
 
 export default async function handler(
   req: NextApiRequest,
