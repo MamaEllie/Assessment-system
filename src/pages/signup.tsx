@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TextInput, rem } from '@mantine/core';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 export default function SignUpForm() {
   const [passwordType, setPasswordType] = useState('password');
-  const router = useRouter()
+  const router = useRouter();
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -27,9 +27,23 @@ export default function SignUpForm() {
       .required('Password is required'),
   });
 
-  const handleSubmit = (values: Record<string, string>) => {
-    console.log(values);
-    router.push('/dashboard')
+  const handleSubmit = async (values: Record<string, string>) => {
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (res.status === 201) {
+      const user = await res.json();
+      const stringifiedObj = JSON.stringify(user);
+      localStorage.setItem('userInfo', stringifiedObj);
+      router.push('/dashboard');
+    } else {
+      alert('An error occured');
+    }
   };
 
   const icon = () => (

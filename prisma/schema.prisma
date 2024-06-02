@@ -13,6 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Answer Answer[]
+}
+
 model Assessment {
   id          Int        @id @default(autoincrement())
   name        String
@@ -25,7 +37,7 @@ model Assessment {
 
 model Question {
   id            Int      @id @default(autoincrement())
-  assessmentId        Int
+  assessmentId  Int
   questionText  String
   questionType  String
   options       String[]
@@ -33,19 +45,20 @@ model Question {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  assessment   Assessment     @relation(fields: [assessmentId], references: [id])
-  Answer Answer[]
+  assessment Assessment @relation(fields: [assessmentId], references: [id])
+  Answer     Answer[]
 }
 
 model Answer {
-  id         Int      @id @default(autoincrement())
-  userId     Int
-  assessmentId     Int
-  questionId Int
-  answer     String
-  correct    Boolean
-  answeredAt DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  assessmentId Int
+  questionId   Int
+  answer       String
+  correct      Boolean
+  answeredAt   DateTime @default(now())
 
-  assessment     Assessment     @relation(fields: [assessmentId], references: [id])
-  question Question @relation(fields: [questionId], references: [id])
+  assessment Assessment @relation(fields: [assessmentId], references: [id])
+  question   Question   @relation(fields: [questionId], references: [id])
+  user       User       @relation(fields: [userId], references: [id])
 }

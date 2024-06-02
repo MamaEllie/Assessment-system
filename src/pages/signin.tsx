@@ -23,9 +23,23 @@ export default function LoginForm() {
       .required('Password is required'),
   });
 
-  const handleSubmit = (values: Record<string, string>) => {
-    console.log(values);
-    router.push('/dashboard');
+  const handleSubmit = async (values: Record<string, string>) => {
+    const res = await fetch('/api/auth/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (res.status === 200) {
+      const user = await res.json();
+      const stringifiedObj = JSON.stringify(user)
+      localStorage.setItem('userInfo', stringifiedObj);
+      router.push('/dashboard');
+    } else {
+      alert('Incorrect username or password');
+    }
   };
 
   const icon = () => (

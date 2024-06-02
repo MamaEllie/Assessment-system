@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Assessments, CreateAssessment } from '@/components';
 import { useRouter } from 'next/router';
 
 export default function Dashboard() {
   const [page, setPage] = useState('Dashboard');
-  const router = useRouter()
+  const [user, setUser] = useState<any>(null);
+  const router = useRouter();
   const menus = [
     {
       name: 'Dashboard',
@@ -37,11 +38,16 @@ export default function Dashboard() {
   ];
   function handleMenuOption(menu: string) {
     if (menu === 'Logout') {
-      router.push('/')
+      router.push('/');
     } else {
       setPage(menu);
     }
   }
+
+  useEffect(() => {
+    const user = localStorage.getItem('userInfo');
+    setUser(JSON.parse(user as string));
+  }, []);
 
   return (
     <div>
@@ -72,8 +78,19 @@ export default function Dashboard() {
         </div>
         <div className='flex flex-col'>
           <header className='flex h-14 lg:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40'>
-            <div className='flex-1'>
+            <div className='flex flex-row items-center justify-between w-full'>
               <h1 className='font-semibold text-lg'>Dashboard</h1>
+              {user && (
+                <div className='flex flex-row items-center gap-x-4'>
+                  <div className='text-base font-semibold px-2 py-1.5 rounded-full bg-white border-[1px] border-gray-500'>
+                    {user.firstName.charAt(0)}
+                    {user.lastName.charAt(0)}
+                  </div>
+                  <h1 className=' text-lg font-semibold '>
+                    {user.firstName} {user.lastName}
+                  </h1>
+                </div>
+              )}
             </div>
           </header>
           <div className=' py-10 px-20'>
