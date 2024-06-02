@@ -8,21 +8,21 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'GET') {
-    const tests = await prisma.assessment.findMany({
+    const assessments = await prisma.assessment.findMany({
       include: {
         questions: true,
       },
     });
-    res.status(200).json(tests);
+    res.status(200).json(assessments);
   } else if (req.method === 'POST') {
     const { name, description } = req.body;
-    const newTest = await prisma.assessment.create({
+    const assessment = await prisma.assessment.create({
       data: {
         name,
         description,
       },
     });
-    res.status(201).json(newTest);
+    res.status(201).json(assessment);
   } else {
     res.status(405).end();
   }

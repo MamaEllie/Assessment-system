@@ -1,6 +1,6 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { TextInput, rem } from '@mantine/core';
+import { TextInput } from '@mantine/core';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { useState } from 'react';
 import Link from 'next/link';
