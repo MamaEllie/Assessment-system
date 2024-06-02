@@ -107,6 +107,26 @@ export default function Dashboard() {
     );
   }
 
+  function UserIcon(props: any) {
+    return (
+      <svg
+        {...props}
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path>
+        <circle cx='12' cy='7' r='4'></circle>
+      </svg>
+    );
+  }
+
   function LogOutIcon(props: any) {
     return (
       <svg
@@ -166,6 +186,10 @@ export default function Dashboard() {
                 <div className='flex items-center gap-3 rounded-lg px-3 py-2 text-gray-900 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 bg-gray-100'>
                   <HomeIcon className='h-4 w-4' />
                   Dashboard
+                </div>
+                <div className='flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50'>
+                  <UserIcon className='h-4 w-4' />
+                  Admin
                 </div>
                 <div className='flex items-center gap-3 rounded-lg  px-3 py-2 text-gray-500  transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50'>
                   <PackageIcon className='h-4 w-4' />
