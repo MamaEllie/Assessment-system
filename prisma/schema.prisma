@@ -18,7 +18,7 @@ model User {
   firstName String
   lastName  String
   email     String @unique
-  password  String
+  password  Stringc
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

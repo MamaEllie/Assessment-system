@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   const [page, setPage] = useState('home');
@@ -12,7 +13,14 @@ export default function Home() {
   return (
     <main className='min-h-screen bg-graybg w-full px-8 md:px-0 pb-20'>
       <nav className='flex flex-col md:flex-row items-center md:justify-between gap-y-6 md:gap-y-0 px-10 md:px-32 py-10'>
-        <h1 className=' text-4xl font-bold'>SCAS</h1>
+        <h1 className=' text-4xl font-bold'>
+        <Image
+        src="scas-logo.svg" 
+        alt="logo"
+        width={150}
+        height={75}
+      />
+        </h1>
         <div className='flex flex-row items-center  gap-x-4 md:gap-x-8 text-lg'>
           <h3
             className=' underline cursor-pointer'
@@ -34,9 +42,9 @@ export default function Home() {
       <div className='flex flex-col justify-between items-center w-full md:mt-20'>
         {page === 'home' && (
           <div className=' w-full md:w-2/3 text-center'>
-            <h1 className=' text-2xl md:text-3xl font-semibold text-black'>
+            <h2 className=' text-2xl md:text-3xl font-semibold text-orange-700'>
               Welcome to the Smart Campus Assessment System
-            </h1>
+            </h2>
             <h3 className=' text-xl text-black mt-10 font-semibold'>
               Empowering Educational Institutions for a Smarter Future
             </h3>
@@ -79,7 +87,7 @@ export default function Home() {
               </p>
             </div>
             <div className='flex flex-col gap-y-1 mt-8'>
-              <h1 className='text-xl text-black font-semibold'>Our Story</h1>
+              <h1 className='text-xl text-blackYA font-semibold'>Our Story</h1>
               <p className='text-gray-800'>
                 The Smart Campus Assessment System was developed in response to
                 the growing need for educational institutions to leverage

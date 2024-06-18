@@ -16,8 +16,8 @@ export default async function handler(
     const { name, description, questions } = req.body;
     const assessment = await prisma.assessment.create({
       data: {
-        name,
-        description,
+        name: name,
+        description: description,
         questions: {
           create: questions,
         },

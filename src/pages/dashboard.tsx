@@ -13,7 +13,7 @@ export default function Dashboard() {
       icon: <HomeIcon className='h-4 w-4' />,
     },
     {
-      name: 'Admin',
+      name: 'Assessment Description',
       icon: <UserIcon className='h-4 w-4' />,
     },
     {
@@ -100,15 +100,13 @@ export default function Dashboard() {
                 <Assessments />
               </div>
             )}
-            {page === 'Admin' && (
+            {page === 'Assessment Description' && (
               <div className='w-1/2'>
                 <CreateAssessment />
               </div>
             )}
             {page === 'Current assessment' && (
-              <div className='w-2/3'>
                 <CurrentAssessment />
-              </div>
             )}
           </div>
         </div>
