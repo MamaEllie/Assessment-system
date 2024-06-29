@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Divider, Select } from "@mantine/core";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { AppContext } from "../appContext";
 
 type Questions = {
   id: number;
@@ -28,6 +29,7 @@ export function CurrentAssessment() {
   const [selectedAssessment, setSelectedAssessment] = useState<Assessment>();
   const [submitted, setSubmitted] = useState(false);
   const [percentage, setPercentage] = useState(0);
+  const { setState } = useContext(AppContext);
   useEffect(() => {
     async function fetchAssessments() {
       const res = await fetch("/api/assessment");
@@ -110,6 +112,7 @@ export function CurrentAssessment() {
   };
 
   const handleAssessmentSubmit = async (values: Record<string, string>) => {
+    const recomendations: any[] = [];
     const correctAnswers = selectedAssessment?.questions.map(
       (question) => question.correctAnswer
     );
@@ -119,9 +122,16 @@ export function CurrentAssessment() {
       if (answer === correctAnswers[index]) {
         setPercentage((prev) => prev + 10);
       }
+      else{
+        recomendations.push(selectedAssessment?.questions[index])
+      }
     });
     setSubmitted(true);
-  }; 
+    setState({
+      score: percentage,
+      recomendations: recomendations,
+    });
+  };
 
   return (
     <div>

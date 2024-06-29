@@ -18,7 +18,7 @@ model User {
   firstName String
   lastName  String
   email     String @unique
-  password  Stringc
+  password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -41,6 +41,7 @@ model Question {
   questionText  String
   options       String[]
   correctAnswer String
+  recomendation String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
