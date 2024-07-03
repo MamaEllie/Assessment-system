@@ -10,6 +10,7 @@ type Questions = {
   questionText: string;
   options: string[];
   correctAnswer: string;
+  recomendation: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -113,6 +114,7 @@ export function CurrentAssessment() {
 
   const handleAssessmentSubmit = async (values: Record<string, string>) => {
     const recomendations: any[] = [];
+    let score = 0;
     const correctAnswers = selectedAssessment?.questions.map(
       (question) => question.correctAnswer
     );
@@ -121,14 +123,14 @@ export function CurrentAssessment() {
       //@ts-ignore
       if (answer === correctAnswers[index]) {
         setPercentage((prev) => prev + 10);
-      }
-      else{
-        recomendations.push(selectedAssessment?.questions[index])
+        score = score + 10;
+      } else {
+        recomendations.push(selectedAssessment?.questions[index].recomendation);
       }
     });
     setSubmitted(true);
     setState({
-      score: percentage,
+      score: score,
       recomendations: recomendations,
     });
   };

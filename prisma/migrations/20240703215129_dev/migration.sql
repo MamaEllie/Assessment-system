@@ -29,6 +29,7 @@ CREATE TABLE "Question" (
     "questionText" TEXT NOT NULL,
     "options" TEXT[],
     "correctAnswer" TEXT NOT NULL,
+    "recomendation" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
