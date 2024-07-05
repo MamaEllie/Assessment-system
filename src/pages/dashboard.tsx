@@ -3,6 +3,7 @@ import { Assessments, CreateAssessment } from "@/components";
 import { useRouter } from "next/router";
 import { CurrentAssessment } from "@/components/dashboard/currentAssessment";
 import Recommendation from "@/components/Recommendations";
+import { PreviousAssessment } from "@/components/dashboard/previousAssessment";
 
 interface User {
   firstName: string;
@@ -121,6 +122,7 @@ export default function Dashboard() {
               </div>
             )}
             {page === "Current assessment" && <CurrentAssessment />}
+            {page === "Previous assessment" && <PreviousAssessment />}
             {page === "Recommendations" && <Recommendation />}
           </div>
         </div>
